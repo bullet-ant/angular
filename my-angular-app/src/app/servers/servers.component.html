@@ -1,15 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <!--** This is property binding**
-            ** Here [disabled]="!addServer" is CORRECT
-            ** NOT [disabled]="{{ !addServer }}" is CORRECT -->
-      <button class="btn btn-primary" [disabled]="!addServer" (dblclick)="onAddServer()">Add server</button>
 
-      <p>{{ addServerMessage }}</p>
-      <app-server></app-server>
-      <app-server></app-server>
-      <app-server></app-server>
+      <label>Server Name</label><br>
+      <!-- <input type="text" class="form-control" (input)="onInput($event)"> -->
+      <input type="text" class="form-control" [(ngModel)]="inputMessage"><br>
+
+      <!-- <p>{{ inputMessage }}</p> -->
+
+      
+      <!--** This is property binding**
+        ** Here [disabled]="!addServer" is CORRECT
+        ** NOT [disabled]="{{ !addServer }}" is CORRECT -->
+      <button class="btn btn-primary" [disabled]="!addServer" (click)="onAddServer()">Add server</button>
+
+      <p *ngIf="addedServer">{{ addServerMessage }}</p>
+      
+      <!-- <p *ngIf="addedServer; else isServerCreated">{{ addServerMessage }}</p>
+      <ng-template #isServerCreated>
+        <p>Try adding a server!</p>
+      </ng-template> -->
+
+      <hr>
+      <app-server *ngFor="let server of servers"></app-server>
     </div>
   </div>
 </div>
