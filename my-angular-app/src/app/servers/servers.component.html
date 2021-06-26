@@ -1,4 +1,15 @@
-<p>All servers here:</p>
-<app-server></app-server>
-<app-server></app-server>
-<app-server></app-server>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <!--** This is property binding**
+            ** Here [disabled]="!addServer" is CORRECT
+            ** NOT [disabled]="{{ !addServer }}" is CORRECT -->
+      <button class="btn btn-primary" [disabled]="!addServer" (dblclick)="onAddServer()">Add server</button>
+
+      <p>{{ addServerMessage }}</p>
+      <app-server></app-server>
+      <app-server></app-server>
+      <app-server></app-server>
+    </div>
+  </div>
+</div>
